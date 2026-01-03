@@ -4,7 +4,8 @@ A dual-pane editor for **RXData files** (.rxdata) - Ruby Marshal save files used
 
 ## What is this?
 
-This app lets you edit RXData files from RPG Maker games. You can view and modify game data, transfer objects between files, and edit values safely without corrupting your saves.
+This app lets you edit RXData files from RPG Maker games. You can view and modify game data, transfer objects between files, and edit values safely without corrupting your saves (if you are doing it correctly).
+I recommend making a copy of your RXData files before editing them.
 
 ## Features
 
@@ -16,7 +17,7 @@ This app lets you edit RXData files from RPG Maker games. You can view and modif
 
 ## Who made this?
 
-Built by the community for RPG Maker game modders and save editors.
+Built by me with the help of AI lol.
 
 ## License
 
