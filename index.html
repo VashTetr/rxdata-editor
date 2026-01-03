@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>RXData Editor - Pokemon Empyrean (Dual Pane)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>RXData Editor - Dual Pane</h1>
+            <div class="controls">
+                <div class="pane-controls">
+                    <span class="pane-label">Left Pane:</span>
+                    <button id="loadLeftBtn">Load Left File</button>
+                    <button id="saveLeftBtn" disabled>Save Left</button>
+                    <span id="leftFileName">No file loaded</span>
+                </div>
+                <div class="pane-controls">
+                    <span class="pane-label">Right Pane:</span>
+                    <button id="loadRightBtn">Load Right File</button>
+                    <button id="saveRightBtn" disabled>Save Right</button>
+                    <span id="rightFileName">No file loaded</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="pane left-pane">
+                <div class="pane-header">
+                    <div class="pane-title-section">
+                        <h3>Left File</h3>
+                        <input type="text" id="leftSearchInput" class="search-input"
+                            placeholder="Search attributes..." />
+                    </div>
+                    <div class="pane-actions">
+                        <button id="copyLeftToRightBtn" disabled title="Copy selected item (or use Ctrl+C)">Copy
+                            →</button>
+                        <span class="keyboard-hint">Ctrl+C / Ctrl+V</span>
+                    </div>
+                </div>
+                <div class="pane-content">
+                    <div class="sidebar">
+                        <div id="leftTreeView"></div>
+                    </div>
+                    <div class="editor-panel">
+                        <div id="leftPropertyEditor"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pane right-pane" id="rightPane" style="display: none;">
+                <div class="pane-header">
+                    <div class="pane-title-section">
+                        <h3>Right File</h3>
+                        <input type="text" id="rightSearchInput" class="search-input"
+                            placeholder="Search attributes..." />
+                    </div>
+                    <div class="pane-actions">
+                        <button id="copyRightToLeftBtn" disabled title="Copy selected item (or use Ctrl+C)">←
+                            Copy</button>
+                        <span class="keyboard-hint">Ctrl+C / Ctrl+V</span>
+                    </div>
+                </div>
+                <div class="pane-content">
+                    <div class="sidebar">
+                        <div id="rightTreeView"></div>
+                    </div>
+                    <div class="editor-panel">
+                        <div id="rightPropertyEditor"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Warning Modal -->
+    <div id="warningModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⚠️ Warning: Data Copy Operation</h2>
+            </div>
+            <div class="modal-body">
+                <p><strong>You are about to copy data between save files.</strong></p>
+                <p>This operation can potentially corrupt your save file if:</p>
+                <ul>
+                    <li>The data structures are incompatible</li>
+                    <li>You overwrite critical game data</li>
+                    <li>The target file has different game progress</li>
+                </ul>
+                <p><strong>Recommendation:</strong> Make a backup of your save files before proceeding.</p>
+                <div id="copyDetails"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="confirmCopyBtn" class="btn-danger">Copy Anyway</button>
+                <button id="cancelCopyBtn" class="btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+
+</html>

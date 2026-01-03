@@ -1,0 +1,86 @@
+{
+    "name": "rxdata-editor",
+    "version": "1.0.0",
+    "description": "Dual-pane RXData editor for Pokemon Empyrean save files",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "build": "electron-builder",
+        "build-win": "electron-builder --win",
+        "build-mac": "electron-builder --mac",
+        "build-linux": "electron-builder --linux",
+        "dist": "electron-builder --publish=never",
+        "pack-win": "electron-packager . \"RXData Editor\" --platform=win32 --arch=x64 --out=dist --overwrite --ignore=\"node_modules/(electron-builder|electron-packager)\" --ignore=\"dist\" --ignore=\"tests\"",
+        "test": "node tests/run-tests.js",
+        "test:save": "node tests/test-save-functionality.js",
+        "test:boxes": "node tests/test-box-copy.js",
+        "test:real-app": "node tests/test-real-app-behavior.js",
+        "test:name": "node tests/test-character-name-change.js",
+        "test:binary": "node tests/test-binary-comparison.js",
+        "test:selective": "node tests/test-selective-serialization.js",
+        "test:prop-editor": "node tests/test-property-editor-changes.js",
+        "test:app-prop": "node tests/test-app-property-editor.js",
+        "test:reload": "node tests/test-reload-after-save.js",
+        "precommit": "npm test"
+    },
+    "keywords": [
+        "pokemon",
+        "save-editor",
+        "rxdata",
+        "electron"
+    ],
+    "author": "RXData Editor Team",
+    "license": "MIT",
+    "devDependencies": {
+        "electron": "^32.2.6",
+        "electron-builder": "^24.13.3",
+        "electron-packager": "^17.1.2"
+    },
+    "dependencies": {
+        "@hyrious/marshal": "^0.3.3"
+    },
+    "build": {
+        "appId": "com.rxdata-editor.app",
+        "productName": "RXData Editor",
+        "directories": {
+            "output": "dist"
+        },
+        "files": [
+            "main.js",
+            "renderer.js",
+            "index.html",
+            "style.css",
+            "package.json",
+            "node_modules/**/*"
+        ],
+        "win": {
+            "target": [
+                {
+                    "target": "nsis",
+                    "arch": [
+                        "x64"
+                    ]
+                },
+                {
+                    "target": "portable",
+                    "arch": [
+                        "x64"
+                    ]
+                }
+            ],
+            "forceCodeSigning": false
+        },
+        "mac": {
+            "target": "dmg"
+        },
+        "linux": {
+            "target": "AppImage"
+        },
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true,
+            "createDesktopShortcut": true,
+            "createStartMenuShortcut": true
+        }
+    }
+}
