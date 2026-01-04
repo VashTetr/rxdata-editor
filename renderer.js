@@ -1167,7 +1167,7 @@ class DualPaneRXDataEditor {
                 // Show the right pane when a file is loaded there
                 if (pane === 'right') {
                     const rightPane = document.getElementById('rightPane');
-                    rightPane.style.display = 'block';
+                    rightPane.style.display = 'flex';
 
                     // Reset flex properties for proper resizing
                     const leftPane = document.querySelector('.left-pane');
